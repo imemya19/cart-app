@@ -1,0 +1,26 @@
+.navbar{
+    background-color: blanchedalmond;
+    position:sticky;
+    display: flex;
+    justify-content: space-between;
+    padding:2%;
+
+}
+.heading{
+    font-size: 2em;
+}
+.cart-icon{
+    font-size: 2rem;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.total-qty{
+    border-radius: 100%;
+    background-color: rgb(188, 238, 164);
+    font-size: 0.5em;
+    padding:0.2rem;
+    position:absolute;
+    top: -0.8rem;
+    right:-0.8rem
+}

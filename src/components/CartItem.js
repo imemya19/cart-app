@@ -2,12 +2,10 @@ import '../styles/CartItem.css';
 import {FaPlusCircle,FaMinusCircle,FaTrash} from 'react-icons/fa'
 import React from 'react'
 
-class CartItem extends React.Component{
+const CartItem =(props)=>{
 
-
-  render(){
-   const {title,price,qty} = this.props.item;
-   const {item, handleIncQty,handleDecQty,handleDelItem} =this.props;
+   const {title,price,qty} = props.item;
+   const {item, handleIncQty,handleDecQty,handleDelItem} =props;
     return (
       <div className="cart-item">
         <div className="item-image">img</div>
@@ -23,7 +21,7 @@ class CartItem extends React.Component{
         </div>
       </div>
     );
-  }
+  
   
 }
 

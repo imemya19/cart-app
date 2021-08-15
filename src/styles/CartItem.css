@@ -1,0 +1,28 @@
+.cart-item{
+background-color: aquamarine;
+display: flex;
+width:60%;
+height:150px;
+}
+
+.item-image{
+    background-color: rgb(130, 130, 133);
+    width:20%;
+}
+
+
+.item-details{
+    background-color: rgb(224, 208, 208);
+    width:80%;
+    padding: 0.5rem;
+}
+
+.action-buttons{
+    display: flex;
+    padding: 2%;
+
+}
+.action{
+    padding-right:2%;
+    cursor: pointer;
+}

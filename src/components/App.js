@@ -2,28 +2,13 @@ import '../styles/App.css';
 import React from 'react';
 import Cart from './Cart';
 import NavBar from './NavBar';
-
+import firebase from 'firebase'
 class App extends React.Component {
   constructor(){
         super();
         this.state={
-            products:[
-                {
-                    title:"Choclate Box",
-                    price:500,
-                    qty:2
-                },
-                {
-                    title:"Uncle chips",
-                    price:200,
-                    qty:18
-                },
-                {
-                    title:"Fried momos",
-                    price:350,
-                    qty:6
-                }
-            ]     
+            products:[],
+            loading:true    
       }
     }
 
@@ -33,7 +18,7 @@ class App extends React.Component {
         products[index].qty +=1;
 
         this.setState({
-            products
+            products,
         })
       }
       
@@ -67,7 +52,36 @@ class App extends React.Component {
         return totalQty;
       }
 
+      cartTotal = ()=>{
+        const {products} =this.state;
+        var total=0;
+        products.map((item)=>{
+          total += (item.qty * item.price);
+        })
+        return total;
+      }
+
+      componentDidMount(){
+        firebase
+        .firestore()
+        .collection('products')
+        .get()
+        .then((snapshot)=>{
+         const products =  snapshot.docs.map((doc)=>{
+          const data =  doc.data();
+          data["id"] = doc.id
+          return data;
+          })
+          this.setState({
+            products,
+            loading:false
+          })
+
+        })
+      }
+
   render(){
+    
     return (
     <div className="App">
     <NavBar
@@ -79,6 +93,12 @@ class App extends React.Component {
        handleDecQty = {this.decreaseQty}
        handleDelItem = {this.deleteItem}
      />
+
+     <div>
+     {this.state.loading && <h1>loading the data!</h1>}
+
+       Cart Total: <span>{this.cartTotal()}</span>
+     </div>
     </div>
   );
 }

@@ -11,6 +11,7 @@ const Cart =(props)=>{
       {products.map((item)=>{
           return(
             <CartItem 
+            key={item.id}
             item={item} 
             handleIncQty = {props.handleIncQty}
             handleDecQty = {props.handleDecQty}
